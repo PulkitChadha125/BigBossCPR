@@ -52,6 +52,7 @@ def get_user_settings():
                     high=float(data['High'])
                     low=float(data['Low'])
                     close=float(data['Close'])
+                    Datetime=data['Datetime']
 
                     cpr_percentage_val = close * cpr_percentage*0.01
 
@@ -64,7 +65,7 @@ def get_user_settings():
                     topcentral=pivotpoint-bottomcentral
                     topcentral=topcentral+pivotpoint
 
-                    difference=topcentral-bottomcentral
+                    difference=abs(topcentral-bottomcentral)
 
                     if (topcentral-bottomcentral)<=cpr_percentage_val:
                         TradingEnabled= True
@@ -79,6 +80,7 @@ def get_user_settings():
                     print(f"No matching row found for symbol {symbol}")
 
                 symbol_dict[symbol] = {
+                    "Datetime":Datetime,
                     "ScripCode":spcode,
                     "CPR_Percentage":cpr_percentage,
                     "high":high,
@@ -99,9 +101,8 @@ def get_user_settings():
 
 def savetocsv(symbol_dict):
     df = pd.DataFrame.from_dict(symbol_dict, orient='index')
-
-    # Save the DataFrame to a CSV file
-    df.to_csv('symbol_data.csv', index_label='Symbol')
+    df_filtered = df[df['TradingEnabled']]
+    df_filtered.to_csv('symbol_data.csv', index_label='Symbol')
 
 
 get_user_settings()
