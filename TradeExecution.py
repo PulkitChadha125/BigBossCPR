@@ -40,10 +40,10 @@ def get_user_settings():
         for index, row in df.iterrows():
             symbol_dict = {
                 'Symbol': row['Symbol'],
-                'ScripCode': row['ScripCode'],
-                'BottomCentral':row['Bottom Central'],
-                'TopCentral': row['Top Central'],
-                'Difference':row['Difference'],
+                'ScripCode': int(row['ScripCode']),
+                'BottomCentral':float(row['Bottom Central']),
+                'TopCentral': float(row['Top Central']),
+                'Difference':float(row['Difference']),
                 'TradingEnabled': row['TradingEnabled'],
                 'TimeFrame': row['TimeFrame'],
                 "TradeType": row['TradeType'],
@@ -55,7 +55,20 @@ def get_user_settings():
                 "BreakEvenMultiplier": int(row['BreakEvenMultiplier']),
                 "USE_CLOSING_CRITERIA": row['USE_CLOSING_CRITERIA'],
                 "ClosePercentage": row['ClosePercentage'],
+                "NoOfCounterTrade":int(row['NoOfCounterTrade']),
+                "count":0,
                 "RunOnceHistory":False,
+                "open_value" : None,
+                "high_value" :None,
+                "low_value" : None,
+                "close_value" :None,
+                "volume_value": None,
+                "TradeSide":None,
+                "InitialTrade":None,
+                "StoplossValue": None,
+                "TargetValue": None,
+                "BreakEvenValue": None,
+                "EntryPrice":None,
             }
             result_dict[row['Symbol']] = symbol_dict
         print("result_dict: ",result_dict)
@@ -84,6 +97,121 @@ def main_strategy ():
                     low_value = float(data['Low'])
                     close_value = float(data['Close'])
                     volume_value = float(data['Volume'])
+
+                    params["open_value"] = open_value
+                    params["high_value"] = high_value
+                    params["low_value"] = low_value
+                    params["close_value"] =close_value
+                    params["volume_value"]= volume_value
+
+                    if high_value-low_value > params["CandleRangePts"]:
+                        params["TradingEnabled"]=False
+
+                    if volume_value < params["Volume"]:
+                        params["TradingEnabled"] = False
+
+                    if open_value> params["TopCentral"]:
+                        params["TradeSide"]= "BUY"
+                        if (abs(open_value-params["TopCentral"]))> params["OpeningDistance"]:
+                            params["TradingEnabled"] = False
+
+                    if open_value< params["BottomCentral"]:
+                        params["TradeSide"] = "SHORT"
+                        if (abs(open_value-params["BottomCentral"]))> params["OpeningDistance"]:
+                            params["TradingEnabled"] = False
+
+                if params["TradingEnabled"] == True:
+                    ltp=float(FivePaisaIntegration.get_ltp(int(params['ScripCode'])))
+
+                    if params["TradeSide"]=="BUY" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
+                        if ltp>=params["high_value"]:
+                            params["InitialTrade"]="BUY"
+                            params["count"]=params["count"]+1
+                            params["EntryPrice"]=ltp
+                            stoploss= params["low_value"]
+                            params["StoplossValue"]= stoploss
+                            diff= params["high_value"]-stoploss
+                            tgtdiff=diff*params["TargetMultiplier"]
+                            breakdiff= diff*params["BreakEvenMultiplier"]
+                            params["TargetValue"]= params["high_value"]+tgtdiff
+                            params["BreakEvenValue"]= params["high_value"]+breakdiff
+                            orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                    if params["TradeSide"]=="SHORT" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
+                        if ltp<=params["low_value"]:
+                            params["InitialTrade"]="SHORT"
+                            params["EntryPrice"] = ltp
+                            params["count"] = params["count"] + 1
+                            stoploss = params["high_value"]
+                            params["StoplossValue"] = stoploss
+                            diff = stoploss-params["low_value"]
+                            tgtdiff = diff * params["TargetMultiplier"]
+                            breakdiff = diff * params["BreakEvenMultiplier"]
+                            params["TargetValue"] = params["low_value"]-tgtdiff
+                            params["BreakEvenValue"] = params["low_value"]- breakdiff
+                            orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+    # target & stoposs calculation
+                    if params["InitialTrade"]=="BUY":
+                        if ltp>=params["TargetValue"]and params["TargetValue"]>0:
+                            params["InitialTrade"]=None
+                            params["TradingEnabled"]=False
+                            params["TargetValue"]=0
+                            params["StoplossValue"] = 0
+                            params["BreakEvenValue"]=0
+                            orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                        if ltp>=params["BreakEvenValue"] and params["BreakEvenValue"]>0:
+                            params["StoplossValue"]=params["EntryPrice"]
+                            params["BreakEvenValue"]=0
+                            orderlog = f'{timestamp} Breakeven executed {symbol} @ {ltp}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                        if ltp<=params["StoplossValue"]and params["StoplossValue"]>0:
+                            params["InitialTrade"]=None
+                            params["TargetValue"] = 0
+                            params["StoplossValue"] = 0
+                            params["BreakEvenValue"] = 0
+                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                    if params["InitialTrade"] == "SHORT":
+                        if ltp <= params["TargetValue"] and params["TargetValue"] > 0:
+                            params["InitialTrade"] = None
+                            params["TradingEnabled"] = False
+                            params["TargetValue"] = 0
+                            params["StoplossValue"] = 0
+                            params["BreakEvenValue"] = 0
+                            orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                        if ltp <= params["BreakEvenValue"] and params["BreakEvenValue"] > 0:
+                            params["InitialTrade"] = None
+                            params["TargetValue"] = 0
+                            params["StoplossValue"] = 0
+                            params["BreakEvenValue"] = 0
+                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
+                        if ltp >= params["StoplossValue"] and params["StoplossValue"] > 0:
+                            params["InitialTrade"] = None
+                            params["TargetValue"] = 0
+                            params["StoplossValue"] = 0
+                            params["BreakEvenValue"] = 0
+                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
+
 
     except Exception as e:
         print("Error happened in Main strategy loop: ", str(e))
