@@ -67,14 +67,10 @@ def get_user_settings():
 
                     difference=abs(topcentral-bottomcentral)
 
-                    if (topcentral-bottomcentral)<=cpr_percentage_val:
+                    if difference<=cpr_percentage_val:
                         TradingEnabled= True
                     else:
                         TradingEnabled = False
-
-
-
-
 
                 else:
                     print(f"No matching row found for symbol {symbol}")

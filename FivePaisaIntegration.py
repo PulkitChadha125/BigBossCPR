@@ -7,7 +7,6 @@ EncryptionKey="ZAsxzvvnWK6sj3qxkfsUBYYhievD0Jbq"
 Validupto="3/30/2050 12:00:00 PM"
 Redirect_URL="Null"
 totpstr="GUYDCMBRHA3TOXZVKBDUWRKZ"
-
 from py5paisa import FivePaisaClient
 import pyotp,datetime
 import pandas as pd
@@ -30,11 +29,11 @@ def login():
     client.get_oauth_session('Your Response Token')
     print(client.get_access_token())
 
-def get_historical_data(token):
+def get_historical_data(token,timeframe):
     global client
     from_time = datetime.datetime.now() - datetime.timedelta(days=4)
     to_time = datetime.datetime.now()
-    df = client.historical_data('N', 'C', token, '1d', from_time, to_time)
+    df = client.historical_data('N', 'C', token, timeframe, from_time, to_time)
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df.set_index('Datetime', inplace=True)
     df.reset_index(inplace=True)
@@ -44,30 +43,7 @@ def get_historical_data(token):
     return last_row_values
 
 
-#
-# def get_historical_data(timframe,token,RSIPeriod,Spperios,spmul,atrperiod):
-#     global client
-#     from_time=datetime.datetime.now()-datetime.timedelta(days=4)
-#     to_time=datetime.datetime.now()
-#
-#     df=client.historical_data('N','D',token,timframe,from_time,to_time)
-#     df["RSI"] = ta.rsi(close=df["Close"], length=RSIPeriod)
-#     df["VWAP"] = ta.vwap(high=df["High"], low=df["Low"], close=df["Close"],
-#                                  volume=df["Volume"])
-#     colname = f'SUPERT_{int(Spperios)}_{spmul}'
-#     colname2 = f'SUPERTd_{int(Spperios)}_{spmul}'
-#
-#     df["Supertrend Values"] = ta.supertrend(high=df['inth'], low=df['intl'], close=df['intc'], length=Spperios,
-#                                             multiplier=spmul)[colname]
-#     df["Supertrend Signal"] = ta.supertrend(high=df['inth'], low=df['intl'], close=df['intc'], length=Spperios,
-#                                             multiplier=spmul)[colname2]
-#
-#     df['Datetime'] = pd.to_datetime(df['Datetime'])
-#
-#     # Format 'Datetime' column as human-readable
-#     df['Datetime'] = df['Datetime'].dt.strftime('%Y-%m-%d %H:%M:%S')
-#     print(df)
-#
+
 
 def get_live_market_feed():
     global client
