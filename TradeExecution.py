@@ -1,5 +1,6 @@
 import traceback
-import FivePaisaIntegration
+import pyotp
+import FivePaisaIntegration,Zerodha_Integration
 import time as sleep_time
 import pandas as pd
 from datetime import datetime
@@ -7,6 +8,35 @@ import threading
 lock = threading.Lock()
 import time
 FivePaisaIntegration.login()
+
+
+def get_zerodha_credentials():
+    credentials = {}
+    try:
+        df = pd.read_csv('MainSettings.csv')
+        for index, row in df.iterrows():
+            title = row['Title']
+            value = row['Value']
+            credentials[title] = value
+    except pd.errors.EmptyDataError:
+        print("The CSV file is empty or has no data.")
+    except FileNotFoundError:
+        print("The CSV file was not found.")
+    except Exception as e:
+        print("An error occurred while reading the CSV file:", str(e))
+
+    return credentials
+
+credentials_dict = get_zerodha_credentials()
+user_id = credentials_dict.get('ZerodhaUserId')  # Login Id
+password = credentials_dict.get('ZerodhaPassword')  # Login password
+fakey = credentials_dict.get('Zerodha2fa')
+twofa = pyotp.TOTP(fakey)
+twofa = twofa.now()
+
+Zerodha_Integration.login(user_id, password, twofa)
+
+
 def write_to_order_logs(message):
     with open('OrderLog.txt', 'a') as file:  # Open the file in append mode
         file.write(message + '\n')
@@ -97,24 +127,19 @@ def main_strategy ():
                     low_value = float(data['Low'])
                     close_value = float(data['Close'])
                     volume_value = float(data['Volume'])
-
                     params["open_value"] = open_value
                     params["high_value"] = high_value
                     params["low_value"] = low_value
                     params["close_value"] =close_value
                     params["volume_value"]= volume_value
-
                     if high_value-low_value > params["CandleRangePts"]:
                         params["TradingEnabled"]=False
-
                     if volume_value < params["Volume"]:
                         params["TradingEnabled"] = False
-
                     if open_value> params["TopCentral"]:
                         params["TradeSide"]= "BUY"
                         if (abs(open_value-params["TopCentral"]))> params["OpeningDistance"]:
                             params["TradingEnabled"] = False
-
                     if open_value< params["BottomCentral"]:
                         params["TradeSide"] = "SHORT"
                         if (abs(open_value-params["BottomCentral"]))> params["OpeningDistance"]:
@@ -122,6 +147,7 @@ def main_strategy ():
 
                 if params["TradingEnabled"] == True:
                     ltp=float(FivePaisaIntegration.get_ltp(int(params['ScripCode'])))
+                    print(f'Symbol: {symbol}, ltp {ltp}')
 
                     if params["TradeSide"]=="BUY" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
                         if ltp>=params["high_value"]:
@@ -135,9 +161,12 @@ def main_strategy ():
                             breakdiff= diff*params["BreakEvenMultiplier"]
                             params["TargetValue"]= params["high_value"]+tgtdiff
                             params["BreakEvenValue"]= params["high_value"]+breakdiff
-                            orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
+                                Zerodha_Integration.buy(sym=symbol,quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                     if params["TradeSide"]=="SHORT" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
                         if ltp<=params["low_value"]:
@@ -151,9 +180,11 @@ def main_strategy ():
                             breakdiff = diff * params["BreakEvenMultiplier"]
                             params["TargetValue"] = params["low_value"]-tgtdiff
                             params["BreakEvenValue"] = params["low_value"]- breakdiff
-                            orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
+                                Zerodha_Integration.short(sym=symbol, quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
     # target & stoposs calculation
                     if params["InitialTrade"]=="BUY":
@@ -163,25 +194,30 @@ def main_strategy ():
                             params["TargetValue"]=0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"]=0
-                            orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
+                                Zerodha_Integration.sell(sym=symbol, quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                         if ltp>=params["BreakEvenValue"] and params["BreakEvenValue"]>0:
                             params["StoplossValue"]=params["EntryPrice"]
                             params["BreakEvenValue"]=0
-                            orderlog = f'{timestamp} Breakeven executed {symbol} @ {ltp}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
+                                orderlog = f'{timestamp} Breakeven executed {symbol} , newsl= {params["StoplossValue"]}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                         if ltp<=params["StoplossValue"]and params["StoplossValue"]>0:
                             params["InitialTrade"]=None
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
-                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
+                                Zerodha_Integration.sell(sym=symbol, quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                     if params["InitialTrade"] == "SHORT":
                         if ltp <= params["TargetValue"] and params["TargetValue"] > 0:
@@ -190,27 +226,32 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
-                            orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
+                                Zerodha_Integration.cover(sym=symbol, quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                         if ltp <= params["BreakEvenValue"] and params["BreakEvenValue"] > 0:
                             params["InitialTrade"] = None
                             params["TargetValue"] = 0
-                            params["StoplossValue"] = 0
+                            params["StoplossValue"] = params["EntryPrice"]
                             params["BreakEvenValue"] = 0
-                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
+                                orderlog = f'{timestamp} Tsl executed {symbol} , newsl= {params["StoplossValue"]}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
                         if ltp >= params["StoplossValue"] and params["StoplossValue"] > 0:
                             params["InitialTrade"] = None
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
-                            orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
-                            print(orderlog)
-                            write_to_order_logs(orderlog)
+                            if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
+                                Zerodha_Integration.cover(sym=symbol, quantity=int(params["Quantity"]))
+                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
 
 
     except Exception as e:
@@ -218,27 +259,8 @@ def main_strategy ():
         traceback.print_exc()
 
 
-
-
-def get_zerodha_credentials():
-    credentials = {}
-    try:
-        df = pd.read_csv('MainSettings.csv')
-        for index, row in df.iterrows():
-            title = row['Title']
-            value = row['Value']
-            credentials[title] = value
-    except pd.errors.EmptyDataError:
-        print("The CSV file is empty or has no data.")
-    except FileNotFoundError:
-        print("The CSV file was not found.")
-    except Exception as e:
-        print("An error occurred while reading the CSV file:", str(e))
-
-    return credentials
-credentials_dict = get_zerodha_credentials()
-
-
+# main_strategy()
+# Zerodha_Integration.cover(sym="SBIN", quantity=1)
 while True:
     StartTime = credentials_dict.get('StartTime')
     Stoptime = credentials_dict.get('Stoptime')

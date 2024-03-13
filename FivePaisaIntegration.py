@@ -1,9 +1,9 @@
-AppName="5P50101877"
-AppSource=21885
-UserID="B8I7uoAKrTv"
-Password="v20Crs1503k"
-UserKey="BqlWZe4zncP6S2WKTHRDw7yUz8L7tCZP"
-EncryptionKey="ZAsxzvvnWK6sj3qxkfsUBYYhievD0Jbq"
+AppName="5P50985207"
+AppSource=22072
+UserID="Xr375mgFMNK"
+Password="3lk8hnSOROg"
+UserKey="gmRtyJT5iSs21juJA6Q6eSG4lekeIyjo"
+EncryptionKey="BTOYpwClDHz1qydFoyYy88Oc7XZwyDCB"
 Validupto="3/30/2050 12:00:00 PM"
 Redirect_URL="Null"
 totpstr="GUYDCMBRHA3TOXZVKBDUWRKZ"

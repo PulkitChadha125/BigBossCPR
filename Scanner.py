@@ -47,7 +47,7 @@ def get_user_settings():
                     spcode = matching_row.iloc[0]['ScripCode']
                     cpr_percentage = df[df['Symbol'] == symbol]['CPR_Percentage'].values[0]
 
-                    data = FivePaisaIntegration.get_historical_data(spcode)
+                    data = FivePaisaIntegration.get_historical_data(spcode,'1d')
                     open=float(data['Open'])
                     high=float(data['High'])
                     low=float(data['Low'])
