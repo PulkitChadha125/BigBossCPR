@@ -1,67 +1,31 @@
-12/03/2024 18:25:04 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:11 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:18 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:24 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:31 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:38 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:44 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:25:50 Tsl executed TATAMOTORS , newsl= 1016.5
-12/03/2024 18:30:47 Tsl executed TATAMOTORS , newsl= 1016.5
-13/03/2024 11:43:30 Sell order executed @ M&M @ 1875.55, target= 1871.3499999999997, stoploss= 1876.95,tradecount=1
-13/03/2024 11:43:43 Buy order executed @ ICICIBANK @ 1083.0 , target= 1084.45, stoploss= 1082.45,tradecount=1
-13/03/2024 11:43:48 Sell order executed @ TATASTEEL @ 146.75, target= 146.59999999999997, stoploss= 146.8,tradecount=1
-13/03/2024 11:43:50 Stoploss executed TATASTEEL @ 146.8
-13/03/2024 11:43:52 Sell order executed @ TATASTEEL @ 146.75, target= 146.59999999999997, stoploss= 146.8,tradecount=2
-13/03/2024 11:43:54 Stoploss executed TATASTEEL @ 146.8
-13/03/2024 11:43:57 Sell order executed @ TATASTEEL @ 146.7, target= 146.59999999999997, stoploss= 146.8,tradecount=3
-13/03/2024 11:43:57 Tsl executed TATASTEEL , newsl= 146.7
-13/03/2024 11:43:57 Stoploss executed TATASTEEL @ 146.7
-13/03/2024 11:44:00 Sell order executed @ TATASTEEL @ 146.75, target= 146.59999999999997, stoploss= 146.8,tradecount=4
-13/03/2024 11:44:02 Tsl executed M&M , newsl= 1875.55
-13/03/2024 11:44:04 Sell order executed @ M&M @ 1874.1, target= 1871.3499999999997, stoploss= 1876.95,tradecount=2
-13/03/2024 11:44:04 Tsl executed M&M , newsl= 1874.1
-13/03/2024 11:44:04 Stoploss executed M&M @ 1874.1
-13/03/2024 11:44:04 Tsl executed TATASTEEL , newsl= 146.75
-13/03/2024 11:44:06 Sell order executed @ M&M @ 1873.6, target= 1871.3499999999997, stoploss= 1876.95,tradecount=3
-13/03/2024 11:44:06 Tsl executed M&M , newsl= 1873.6
-13/03/2024 11:44:06 Stoploss executed M&M @ 1873.6
-13/03/2024 11:44:06 Sell order executed @ TATASTEEL @ 146.7, target= 146.59999999999997, stoploss= 146.8,tradecount=5
-13/03/2024 11:44:06 Tsl executed TATASTEEL , newsl= 146.7
-13/03/2024 11:44:06 Stoploss executed TATASTEEL @ 146.7
-13/03/2024 11:44:07 Breakeven executed ICICIBANK , newsl= 1083.0
-13/03/2024 11:44:08 Sell order executed @ M&M @ 1873.7, target= 1871.3499999999997, stoploss= 1876.95,tradecount=4
-13/03/2024 11:44:08 Tsl executed M&M , newsl= 1873.7
-13/03/2024 11:44:08 Stoploss executed M&M @ 1873.7
-13/03/2024 11:44:08 Sell order executed @ TATASTEEL @ 146.7, target= 146.59999999999997, stoploss= 146.8,tradecount=6
-13/03/2024 11:44:08 Tsl executed TATASTEEL , newsl= 146.7
-13/03/2024 11:44:08 Stoploss executed TATASTEEL @ 146.7
-13/03/2024 11:44:10 Sell order executed @ M&M @ 1873.25, target= 1871.3499999999997, stoploss= 1876.95,tradecount=5
-13/03/2024 11:44:10 Tsl executed M&M , newsl= 1873.25
-13/03/2024 11:44:10 Stoploss executed M&M @ 1873.25
-13/03/2024 11:44:10 Sell order executed @ TATASTEEL @ 146.75, target= 146.59999999999997, stoploss= 146.8,tradecount=7
-13/03/2024 11:44:12 Sell order executed @ M&M @ 1873.25, target= 1871.3499999999997, stoploss= 1876.95,tradecount=6
-13/03/2024 11:44:12 Tsl executed M&M , newsl= 1873.25
-13/03/2024 11:44:12 Stoploss executed M&M @ 1873.25
-13/03/2024 11:44:13 Sell order executed @ M&M @ 1872.8, target= 1871.3499999999997, stoploss= 1876.95,tradecount=7
-13/03/2024 11:44:13 Tsl executed M&M , newsl= 1872.8
-13/03/2024 11:44:13 Stoploss executed M&M @ 1872.8
-13/03/2024 11:44:15 Stoploss executed ICICIBANK @ 1083.0
-13/03/2024 11:44:15 Sell order executed @ M&M @ 1872.0, target= 1871.3499999999997, stoploss= 1876.95,tradecount=8
-13/03/2024 11:44:15 Tsl executed M&M , newsl= 1872.0
-13/03/2024 11:44:15 Stoploss executed M&M @ 1872.0
-13/03/2024 11:44:16 Tsl executed TATASTEEL , newsl= 146.75
-13/03/2024 11:44:17 Buy order executed @ ICICIBANK @ 1083.3 , target= 1084.45, stoploss= 1082.45,tradecount=2
-13/03/2024 11:44:18 Sell order executed @ TATASTEEL @ 146.7, target= 146.59999999999997, stoploss= 146.8,tradecount=8
-13/03/2024 11:44:18 Tsl executed TATASTEEL , newsl= 146.7
-13/03/2024 11:44:18 Stoploss executed TATASTEEL @ 146.7
-13/03/2024 11:44:22 Breakeven executed ICICIBANK , newsl= 1083.3
-13/03/2024 11:44:31 Target executed ICICIBANK @ 1084.45, no more trades will be taken in ICICIBANK
-13/03/2024 11:45:31 Buy order executed @ INFY @ 1613.95 , target= 1618.0000000000005, stoploss= 1612.6,tradecount=1
-13/03/2024 11:45:33 Sell order executed @ TATASTEEL @ 146.7, target= 146.24999999999997, stoploss= 146.85,tradecount=1
-13/03/2024 11:45:38 Sell order executed @ COALINDIA @ 431.15, target= 430.0999999999999, stoploss= 431.5,tradecount=1
-13/03/2024 11:45:42 Stoploss executed TATASTEEL @ 146.85
-13/03/2024 11:45:49 Sell order executed @ M&M @ 1870.0, target= 1864.7500000000005, stoploss= 1872.35,tradecount=1
-13/03/2024 11:45:49 Sell order executed @ POWERGRID @ 268.9, target= 267.8499999999999, stoploss= 269.25,tradecount=1
-13/03/2024 11:50:08 Buy order executed @ ICICIBANK @ 1083.7 , target= 1084.0000000000005, stoploss= 1083.6,tradecount=1
-13/03/2024 11:50:54 Buy order executed @ INFY @ 1614.5 , target= 1616.1499999999999, stoploss= 1613.95,tradecount=1
-13/03/2024 11:50:55 Sell order executed @ POWERGRID @ 267.9, target= 265.9499999999999, stoploss= 268.55,tradecount=1
+14/03/2024 11:49:36 Buy order executed @ BAJFINANCE @ 6465.0 , target= 6494.849999999999, stoploss= 6455.05,tradecount=1
+14/03/2024 11:49:41 Sell order executed @ AXISBANK @ 1078.35, target= 1074.9500000000005, stoploss= 1079.55,tradecount=1
+14/03/2024 11:50:09 Buy order executed @ AUBANK @ 585.45 , target= 586.5999999999999, stoploss= 585.0,tradecount=1
+14/03/2024 11:50:17 Stoploss executed AXISBANK @ 1079.6
+14/03/2024 11:51:41 Stoploss executed AUBANK @ 585.0
+14/03/2024 11:52:09 Buy order executed @ AUBANK @ 585.4 , target= 586.5999999999999, stoploss= 585.0,tradecount=2
+14/03/2024 11:52:19 Stoploss executed AUBANK @ 585.0
+14/03/2024 11:52:25 Sell order executed @ AXISBANK @ 1078.3, target= 1074.9500000000005, stoploss= 1079.55,tradecount=2
+14/03/2024 11:52:31 Buy order executed @ AUBANK @ 585.4 , target= 586.5999999999999, stoploss= 585.0,tradecount=3
+14/03/2024 11:52:42 Stoploss executed AUBANK @ 585.0
+14/03/2024 11:53:49 Stoploss executed BAJFINANCE @ 6454.35
+14/03/2024 11:54:40 Buy order executed @ AUBANK @ 585.4 , target= 586.5999999999999, stoploss= 585.0,tradecount=4
+14/03/2024 11:56:29 Stoploss executed AUBANK @ 585.0
+14/03/2024 11:57:01 Buy order executed @ AUBANK @ 585.4 , target= 586.5999999999999, stoploss= 585.0,tradecount=5
+14/03/2024 12:00:40 Tsl executed AXISBANK , newsl= 1078.3
+14/03/2024 12:00:42 Sell order executed @ AXISBANK @ 1077.05, target= 1074.9500000000005, stoploss= 1079.55,tradecount=3
+14/03/2024 12:00:42 Tsl executed AXISBANK , newsl= 1077.05
+14/03/2024 12:00:42 Stoploss executed AXISBANK @ 1077.05
+14/03/2024 12:00:44 Sell order executed @ AXISBANK @ 1077.4, target= 1074.9500000000005, stoploss= 1079.55,tradecount=4
+14/03/2024 12:01:19 Breakeven executed AUBANK , newsl= 585.4
+14/03/2024 12:03:04 Tsl executed AXISBANK , newsl= 1077.4
+14/03/2024 12:03:10 Tsl executed AXISBANK , newsl= 1077.1
+14/03/2024 12:03:12 Tsl executed AXISBANK , newsl= 1077.3
+14/03/2024 12:03:25 Tsl executed AXISBANK , newsl= 1078.1
+14/03/2024 12:03:31 Tsl executed AXISBANK , newsl= 1077.3
+14/03/2024 12:03:59 Tsl executed AXISBANK , newsl= 1077.3
+14/03/2024 12:04:12 Breakeven executed AUBANK , newsl= 585.4
+14/03/2024 13:05:24 Sell order executed @ HDFCBANK @ 1459.5, target= 1458.35, stoploss= 1460.15,tradecount=1
+14/03/2024 13:05:39 Tsl executed HDFCBANK , newsl= 1459.5
+14/03/2024 13:05:40 Sell order executed @ HDFCBANK @ 1459.3, target= 1458.35, stoploss= 1460.15,tradecount=2
+14/03/2024 13:05:43 Tsl executed HDFCBANK , newsl= 1459.3

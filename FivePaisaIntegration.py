@@ -6,7 +6,7 @@ UserKey="gmRtyJT5iSs21juJA6Q6eSG4lekeIyjo"
 EncryptionKey="BTOYpwClDHz1qydFoyYy88Oc7XZwyDCB"
 Validupto="3/30/2050 12:00:00 PM"
 Redirect_URL="Null"
-totpstr="GUYDCMBRHA3TOXZVKBDUWRKZ"
+totpstr="GUYDSOBVGIYDOXZVKBDUWRKZ"
 from py5paisa import FivePaisaClient
 import pyotp,datetime
 import pandas as pd
@@ -24,8 +24,9 @@ def login():
 
     twofa = pyotp.TOTP(totpstr)
     twofa = twofa.now()
+    print(twofa)
     client = FivePaisaClient(cred=cred)
-    client.get_totp_session(client_code=50101877,totp=twofa,pin=654321)
+    client.get_totp_session(client_code=50985207,totp=twofa,pin=162916)
     client.get_oauth_session('Your Response Token')
     print(client.get_access_token())
 
@@ -119,6 +120,12 @@ def get_margin():
     else:
         print("Error: Unable to get NetAvailableMargin")
         return None
+
+def orderbook():
+
+
+    global client
+    client.get_tradebook()
 
 
 

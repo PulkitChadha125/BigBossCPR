@@ -259,8 +259,10 @@ def main_strategy ():
         traceback.print_exc()
 
 
-# main_strategy()
-# Zerodha_Integration.cover(sym="SBIN", quantity=1)
+# print(FivePaisaIntegration.get_margin())
+
+# # main_strategy()
+# # Zerodha_Integration.cover(sym="SBIN", quantity=1)
 while True:
     StartTime = credentials_dict.get('StartTime')
     Stoptime = credentials_dict.get('Stoptime')
