@@ -164,7 +164,7 @@ def main_strategy ():
 
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
                                 Zerodha_Integration.buy(sym=symbol,quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                                orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, breakeven= {params["BreakEvenValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -182,7 +182,7 @@ def main_strategy ():
                             params["BreakEvenValue"] = params["low_value"]- breakdiff
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 Zerodha_Integration.short(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                                orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]}, breakeven= {params["BreakEvenValue"]} ,tradecount={params["count"]}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -213,6 +213,7 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
+                            params["TradeSide"] = "SHORT"
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
                                 Zerodha_Integration.sell(sym=symbol, quantity=int(params["Quantity"]))
                                 orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
@@ -247,6 +248,7 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
+                            params["TradeSide"] ="BUY"
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 Zerodha_Integration.cover(sym=symbol, quantity=int(params["Quantity"]))
                                 orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'

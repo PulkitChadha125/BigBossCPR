@@ -45,7 +45,7 @@ def get_user_settings():
                 if not matching_row.empty:
                     # Get the 'ScripCode' value
                     spcode = matching_row.iloc[0]['ScripCode']
-                    cpr_percentage = df[df['Symbol'] == symbol]['CPR_Percentage'].values[0]
+                    CPR_VALUE = df[df['Symbol'] == symbol]['CPR_VALUE'].values[0]
 
                     data = FivePaisaIntegration.get_historical_data(spcode,'1d')
                     open=float(data['Open'])
@@ -54,7 +54,7 @@ def get_user_settings():
                     close=float(data['Close'])
                     Datetime=data['Datetime']
 
-                    cpr_percentage_val = close * cpr_percentage*0.01
+
 
                     pivotpoint=high+low+close
                     pivotpoint=pivotpoint/3
@@ -67,7 +67,7 @@ def get_user_settings():
 
                     difference=abs(topcentral-bottomcentral)
 
-                    if difference<=cpr_percentage_val:
+                    if difference<=CPR_VALUE:
                         TradingEnabled= True
                     else:
                         TradingEnabled = False
@@ -78,7 +78,7 @@ def get_user_settings():
                 symbol_dict[symbol] = {
                     "Datetime":Datetime,
                     "ScripCode":spcode,
-                    "CPR_Percentage":cpr_percentage,
+                    "CPR_VALUE":CPR_VALUE,
                     "high":high,
                     "low":low,
                     "close":close,
