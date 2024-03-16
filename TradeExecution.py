@@ -9,7 +9,7 @@ lock = threading.Lock()
 import time
 FivePaisaIntegration.login()
 
-
+total_pnl=[]
 def get_zerodha_credentials():
     credentials = {}
     try:
@@ -149,7 +149,11 @@ def main_strategy ():
                     ltp=float(FivePaisaIntegration.get_ltp(int(params['ScripCode'])))
                     print(f'Symbol: {symbol}, ltp {ltp}')
 
-                    if params["TradeSide"]=="BUY" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
+                    if (
+                            params["TradeSide"]=="BUY" and
+                            params["InitialTrade"] == None and
+                            params["count"]<=params["NoOfCounterTrade"]
+                    ):
                         if ltp>=params["high_value"]:
                             params["InitialTrade"]="BUY"
                             params["count"]=params["count"]+1
@@ -168,7 +172,11 @@ def main_strategy ():
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
-                    if params["TradeSide"]=="SHORT" and params["InitialTrade"] == None and params["count"]<=params["NoOfCounterTrade"]:
+                    if (
+                            params["TradeSide"]=="SHORT" and
+                            params["InitialTrade"] == None and
+                            params["count"]<=params["NoOfCounterTrade"]
+                    ):
                         if ltp<=params["low_value"]:
                             params["InitialTrade"]="SHORT"
                             params["EntryPrice"] = ltp
@@ -195,8 +203,12 @@ def main_strategy ():
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"]=0
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
+                                pnl=ltp-params["EntryPrice"]
+                                pnl=pnl*params["Quantity"]
+                                total_pnl.append(pnl)
+                                netpnl=sum(total_pnl)
                                 Zerodha_Integration.sell(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol},Current trade pnl = {pnl}, NetPnl= {netpnl}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -213,10 +225,14 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
+                            pnl = ltp - params["EntryPrice"]
+                            pnl = pnl * params["Quantity"]
+                            total_pnl.append(pnl)
+                            netpnl = sum(total_pnl)
                             params["TradeSide"] = "SHORT"
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
                                 Zerodha_Integration.sell(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp},Current trade pnl = {pnl}, NetPnl= {netpnl}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -227,9 +243,13 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
+                            pnl = ltp - params["EntryPrice"]
+                            pnl = pnl * params["Quantity"]
+                            total_pnl.append(pnl)
+                            netpnl = sum(total_pnl)
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 Zerodha_Integration.cover(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol}'
+                                orderlog = f'{timestamp} Target executed {symbol} @ {ltp}, no more trades will be taken in {symbol},Current trade pnl = {pnl}, NetPnl= {netpnl}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -248,10 +268,14 @@ def main_strategy ():
                             params["TargetValue"] = 0
                             params["StoplossValue"] = 0
                             params["BreakEvenValue"] = 0
+                            pnl = ltp - params["EntryPrice"]
+                            pnl = pnl * params["Quantity"]
+                            total_pnl.append(pnl)
+                            netpnl = sum(total_pnl)
                             params["TradeSide"] ="BUY"
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 Zerodha_Integration.cover(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp}'
+                                orderlog = f'{timestamp} Stoploss executed {symbol} @ {ltp},Current trade pnl = {pnl}, NetPnl= {netpnl}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 

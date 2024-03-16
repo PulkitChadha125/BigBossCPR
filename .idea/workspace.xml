@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="80a5deda-a49f-441e-95ad-f283f48c32f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Scanner.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BigBoss Cpr Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MYINSTRUMENTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MYINSTRUMENTS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeExecution.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TradeExecution.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeExecution.py" beforeDir="false" afterPath="$PROJECT_DIR$/TradeExecution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Scanner.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symbol_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/symbol_data.csv" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2dSITR5wyibgTANTRkPVLKfDWTa" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.FivePaisaIntegration.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Scanner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TradeExecution.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Zerodha_Integration.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Desktop/python projects/BigBoss Cpr Project&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80a5deda-a49f-441e-95ad-f283f48c32f4" name="Changes" comment="" />
+      <created>1709995059474</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709995059474</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
