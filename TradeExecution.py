@@ -79,13 +79,15 @@ def get_user_settings():
                 "TradeType": row['TradeType'],
                 "CandleRangePts": float(row['CandleRangePts']),
                 "OpeningDistance": float(row['OpeningDistance']),
-                "Quantity": int(row['Quantity']),
+                "Risk": int(row['Risk']),
                 "Volume": float(row['Volume']),
                 "TargetMultiplier": int(row['TargetMultiplier']),
                 "BreakEvenMultiplier": int(row['BreakEvenMultiplier']),
                 "USE_CLOSING_CRITERIA": row['USE_CLOSING_CRITERIA'],
                 "ClosePercentage": row['ClosePercentage'],
                 "NoOfCounterTrade":int(row['NoOfCounterTrade']),
+                "StartTime" :row['StartTime'],
+                "StopTime":row['StopTime'],
                 "count":0,
                 "RunOnceHistory":False,
                 "open_value" : None,
@@ -99,6 +101,10 @@ def get_user_settings():
                 "TargetValue": None,
                 "BreakEvenValue": None,
                 "EntryPrice":None,
+                "diff":None,
+                "breakdiff":None,
+                "Quantity":None,
+                "Rangeeee":None,
             }
             result_dict[row['Symbol']] = symbol_dict
         print("result_dict: ",result_dict)
@@ -117,9 +123,21 @@ def main_strategy ():
             symbol_value = params['Symbol']
             timestamp = datetime.now()
             timestamp = timestamp.strftime("%d/%m/%Y %H:%M:%S")
+            start_time_str = params['StartTime']
+            start_time = datetime.strptime(start_time_str, '%H:%M').time()
+            end_time_str = params['StopTime']
+            end_time = datetime.strptime(end_time_str, '%H:%M').time()
+            # Get the current time as a datetime object
+            current_time = datetime.now().time()
+            g= start_time <=current_time <= end_time
+            print(f"{symbol}: {g}")
             if isinstance(symbol_value, str):
-                if params["RunOnceHistory"] ==False:
+                if params["RunOnceHistory"] ==False and start_time <=current_time <= end_time:
                     params["RunOnceHistory"]=True
+
+                    print("StartTime=",start_time_str)
+                    print("StopTime=",end_time_str)
+                    print("CurrentTime=",current_time)
                     data=FivePaisaIntegration.get_historical_data(int(params['ScripCode']),str(params['TimeFrame']))
                     print(data)
                     open_value = float(data['Open'])
@@ -132,20 +150,25 @@ def main_strategy ():
                     params["low_value"] = low_value
                     params["close_value"] =close_value
                     params["volume_value"]= volume_value
-                    if high_value-low_value > params["CandleRangePts"]:
+                    params["Rangeeee"]=float(high_value-low_value)
+                    if high_value-low_value <= params["CandleRangePts"]:
                         params["TradingEnabled"]=False
-                    if volume_value < params["Volume"]:
+                        qty= int(params["Risk"]/params["Rangeeee"])
+                        params["Quantity"]=qty
+
+
+                    if volume_value > params["Volume"]:
                         params["TradingEnabled"] = False
-                    if open_value> params["TopCentral"]:
+                    if close_value > params["TopCentral"]:
                         params["TradeSide"]= "BUY"
-                        if (abs(open_value-params["TopCentral"]))> params["OpeningDistance"]:
+                        if (abs(open_value-params["TopCentral"]))< params["OpeningDistance"]:
                             params["TradingEnabled"] = False
-                    if open_value< params["BottomCentral"]:
+                    if close_value < params["BottomCentral"]:
                         params["TradeSide"] = "SHORT"
-                        if (abs(open_value-params["BottomCentral"]))> params["OpeningDistance"]:
+                        if (abs(open_value-params["BottomCentral"]))< params["OpeningDistance"]:
                             params["TradingEnabled"] = False
 
-                if params["TradingEnabled"] == True:
+                if params["TradingEnabled"] == True and start_time <=current_time <= end_time:
                     ltp=float(FivePaisaIntegration.get_ltp(int(params['ScripCode'])))
                     print(f'Symbol: {symbol}, ltp {ltp}')
 
@@ -163,12 +186,13 @@ def main_strategy ():
                             diff= params["high_value"]-stoploss
                             tgtdiff=diff*params["TargetMultiplier"]
                             breakdiff= diff*params["BreakEvenMultiplier"]
+                            params["diff"]=diff
+                            params["breakdiff"]=breakdiff
                             params["TargetValue"]= params["high_value"]+tgtdiff
                             params["BreakEvenValue"]= params["high_value"]+breakdiff
-
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
                                 Zerodha_Integration.buy(sym=symbol,quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , target= {params["TargetValue"]}, breakeven= {params["BreakEvenValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
+                                orderlog = f'{timestamp} Buy order executed @ {symbol} @ {ltp} , qty = {params["Quantity"]} , target= {params["TargetValue"]}, breakeven= {params["BreakEvenValue"]}, stoploss= {params["StoplossValue"]},tradecount={params["count"]}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -188,9 +212,11 @@ def main_strategy ():
                             breakdiff = diff * params["BreakEvenMultiplier"]
                             params["TargetValue"] = params["low_value"]-tgtdiff
                             params["BreakEvenValue"] = params["low_value"]- breakdiff
+                            params["diff"] = diff
+                            params["breakdiff"] = breakdiff
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 Zerodha_Integration.short(sym=symbol, quantity=int(params["Quantity"]))
-                                orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]}, breakeven= {params["BreakEvenValue"]} ,tradecount={params["count"]}'
+                                orderlog = f'{timestamp} Sell order executed @ {symbol} @ {ltp} , qty = {params["Quantity"]}, target= {params["TargetValue"]}, stoploss= {params["StoplossValue"]}, breakeven= {params["BreakEvenValue"]} ,tradecount={params["count"]}'
                                 print(orderlog)
                                 write_to_order_logs(orderlog)
 
@@ -213,8 +239,8 @@ def main_strategy ():
                                 write_to_order_logs(orderlog)
 
                         if ltp>=params["BreakEvenValue"] and params["BreakEvenValue"]>0:
-                            params["StoplossValue"]=params["EntryPrice"]
-                            params["BreakEvenValue"]=0
+                            params["StoplossValue"]=params["StoplossValue"]+params["diff"]
+                            params["BreakEvenValue"]=params["BreakEvenValue"]+params["breakdiff"]
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "BUY":
                                 orderlog = f'{timestamp} Breakeven executed {symbol} , newsl= {params["StoplossValue"]}'
                                 print(orderlog)
@@ -254,10 +280,8 @@ def main_strategy ():
                                 write_to_order_logs(orderlog)
 
                         if ltp <= params["BreakEvenValue"] and params["BreakEvenValue"] > 0:
-                            params["InitialTrade"] = None
-                            params["TargetValue"] = 0
-                            params["StoplossValue"] = params["EntryPrice"]
-                            params["BreakEvenValue"] = 0
+                            params["StoplossValue"] = params["StoplossValue"] - params["diff"]
+                            params["BreakEvenValue"] = params["BreakEvenValue"] - params["breakdiff"]
                             if params["TradeType"] == "BOTH" or params["TradeType"] == "SELL":
                                 orderlog = f'{timestamp} Tsl executed {symbol} , newsl= {params["StoplossValue"]}'
                                 print(orderlog)
@@ -290,12 +314,12 @@ def main_strategy ():
 # # main_strategy()
 # # Zerodha_Integration.cover(sym="SBIN", quantity=1)
 while True:
-    StartTime = credentials_dict.get('StartTime')
+
     Stoptime = credentials_dict.get('Stoptime')
-    start_time = datetime.strptime(StartTime, '%H:%M').time()
+
     stop_time = datetime.strptime(Stoptime, '%H:%M').time()
 
     now = datetime.now().time()
-    if now >= start_time and now < stop_time:
+    if now < stop_time:
         main_strategy()
         time.sleep(1)

@@ -5,22 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80a5deda-a49f-441e-95ad-f283f48c32f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scanner.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BigBoss Cpr Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MYINSTRUMENTS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MYINSTRUMENTS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FivePaisaIntegration.py" beforeDir="false" afterPath="$PROJECT_DIR$/FivePaisaIntegration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainSettings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/MainSettings.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TradeExecution.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TradeExecution.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TradeExecution.py" beforeDir="false" afterPath="$PROJECT_DIR$/TradeExecution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSettings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSettings.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Scanner.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Scanner.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Tree-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Tree-01.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/Tree-02.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/warn-Scanner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Scanner/xref-Scanner.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/PYZ-00.pyz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Scanner.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/warn-TradeExecution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/warn-TradeExecution.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/TradeExecution/xref-TradeExecution.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/xref-TradeExecution.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symbol_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/symbol_data.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +70,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Desktop/python projects/BigBoss Cpr Project&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/Desktop/python projects/Ruperder project 1&quot;
   }
 }</component>
   <component name="SharedIndexes">

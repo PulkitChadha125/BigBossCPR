@@ -1,3 +1,5 @@
+import time
+
 AppName="5P50985207"
 AppSource=22072
 UserID="Xr375mgFMNK"
@@ -63,10 +65,17 @@ def previousdayclose(code):
 
 def get_ltp(code):
     global client
-    req_list_ = [{"Exch": "N", "ExchType": "C", "ScripCode": code}]
-    responce=client.fetch_market_feed_scrip(req_list_)
-    last_rate = float(responce['Data'][0].get('LastRate', 0))
-    print(last_rate)
+    try:
+        req_list_ = [{"Exch": "N", "ExchType": "C", "ScripCode": code}]
+        responce=client.fetch_market_feed_scrip(req_list_)
+        last_rate = float(responce['Data'][0].get('LastRate', 0))
+        print(last_rate)
+    except Exception as e:
+        time.sleep(1)
+        req_list_ = [{"Exch": "N", "ExchType": "C", "ScripCode": code}]
+        responce = client.fetch_market_feed_scrip(req_list_)
+        last_rate = float(responce['Data'][0].get('LastRate', 0))
+        print(last_rate)
 
     return last_rate
 
