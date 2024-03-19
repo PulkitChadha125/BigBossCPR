@@ -29,3 +29,33 @@
 14/03/2024 13:05:39 Tsl executed HDFCBANK , newsl= 1459.5
 14/03/2024 13:05:40 Sell order executed @ HDFCBANK @ 1459.3, target= 1458.35, stoploss= 1460.15,tradecount=2
 14/03/2024 13:05:43 Tsl executed HDFCBANK , newsl= 1459.3
+19/03/2024 10:50:26 Sell order executed @ BEL @ 186.3 , qty = 5000, target= 185.70000000000005, stoploss= 186.5, breakeven= 185.90000000000003 ,tradecount=1
+19/03/2024 10:50:27 Sell order executed @ GAIL @ 174.7 , qty = 4999, target= 174.09999999999994, stoploss= 174.9, breakeven= 174.29999999999995 ,tradecount=1
+19/03/2024 10:50:31 Sell order executed @ BANKINDIA @ 132.8 , qty = 5000, target= 132.20000000000005, stoploss= 133.0, breakeven= 132.40000000000003 ,tradecount=1
+19/03/2024 10:50:32 Sell order executed @ IOC @ 156.0 , qty = 4000, target= 155.25, stoploss= 156.25, breakeven= 155.5 ,tradecount=1
+19/03/2024 10:50:42 Sell order executed @ HDFCBANK @ 1442.75 , qty = 1333, target= 1440.5, stoploss= 1443.5, breakeven= 1441.25 ,tradecount=1
+19/03/2024 10:50:54 Sell order executed @ SBIN @ 728.9 , qty = 6666, target= 728.6500000000001, stoploss= 729.25, breakeven= 728.8000000000001 ,tradecount=1
+19/03/2024 10:50:58 Target executed SBIN @ 728.65, no more trades will be taken in SBIN,Current trade pnl = -1666.5, NetPnl= -1666.5
+19/03/2024 10:51:11 Sell order executed @ INDHOTEL @ 548.4 , qty = 1176, target= 545.9000000000003, stoploss= 549.3, breakeven= 546.7500000000002 ,tradecount=1
+19/03/2024 10:53:38 Sell order executed @ SBIN @ 728.75 , qty = 3333, target= 727.8999999999997, stoploss= 729.1, breakeven= 728.1999999999998 ,tradecount=1
+19/03/2024 10:54:47 Tsl executed SBIN , newsl= 728.8
+19/03/2024 10:55:17 Target executed SBIN @ 727.85, no more trades will be taken in SBIN,Current trade pnl = -2999.6999999999243, NetPnl= -2999.6999999999243
+19/03/2024 11:05:02 Buy order executed @ BHARTIARTL @ 1236.55 , qty = 1000 , target= 1239.5, breakeven= 1238.5, stoploss= 1235.5,tradecount=1
+19/03/2024 11:05:02 Sell order executed @ BIOCON @ 247.8 , qty = 2000, target= 246.3, stoploss= 248.3, breakeven= 246.8 ,tradecount=1
+19/03/2024 11:10:15 Buy order executed @ BHARTIARTL @ 1236.35 , qty = 952 , target= 1239.35, breakeven= 1238.3, stoploss= 1235.15,tradecount=1
+19/03/2024 11:13:09 Sell order executed @ BANKBARODA @ 250.3 , qty = 4000, target= 249.55, stoploss= 250.55, breakeven= 249.8 ,tradecount=1
+19/03/2024 11:13:12 Sell order executed @ SBIN @ 727.35 , qty = 2857, target= 726.3, stoploss= 727.7, breakeven= 726.65 ,tradecount=1
+19/03/2024 11:13:35 Sell order executed @ IOC @ 155.6 , qty = 19999, target= 155.44999999999996, stoploss= 155.65, breakeven= 155.49999999999997 ,tradecount=1
+19/03/2024 11:13:39 Stoploss executed IOC @ 155.65,Current trade pnl = 999.9500000002274, NetPnl= 999.9500000002274
+19/03/2024 11:13:41 Buy order executed @ IOC @ 155.65 , qty = 19999 , target= 155.80000000000004, breakeven= 155.75000000000003, stoploss= 155.6,tradecount=2
+19/03/2024 11:13:43 Buy order executed @ HINDALCO @ 532.85 , qty = 1250 , target= 535.1999999999998, breakeven= 534.3999999999999, stoploss= 532.0,tradecount=1
+19/03/2024 11:14:15 Stoploss executed BANKBARODA @ 250.55,Current trade pnl = 1000.0, NetPnl= 1999.9500000002274
+19/03/2024 11:14:17 Buy order executed @ BANKBARODA @ 250.55 , qty = 4000 , target= 251.3, breakeven= 251.05, stoploss= 250.3,tradecount=2
+19/03/2024 11:14:18 Buy order executed @ HDFCBANK @ 1446.25 , qty = 1000 , target= 1449.25, breakeven= 1448.25, stoploss= 1445.25,tradecount=1
+19/03/2024 11:14:18 Breakeven executed IOC , newsl= 155.65
+19/03/2024 11:14:28 Stoploss executed SBIN @ 727.85,Current trade pnl = 1428.5, NetPnl= 3428.450000000227
+19/03/2024 11:14:30 Buy order executed @ SBIN @ 727.85 , qty = 2857 , target= 728.7500000000001, breakeven= 728.4000000000001, stoploss= 727.35,tradecount=2
+19/03/2024 11:14:34 Target executed IOC @ 155.9, no more trades will be taken in IOC,Current trade pnl = 4999.75, NetPnl= 8428.200000000226
+19/03/2024 11:15:11 Breakeven executed BANKBARODA , newsl= 250.55
+19/03/2024 11:15:14 Breakeven executed HINDALCO , newsl= 532.8
+19/03/2024 11:15:16 Breakeven executed SBIN , newsl= 727.7

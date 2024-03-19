@@ -11,6 +11,7 @@ Redirect_URL="Null"
 totpstr="GUYDSOBVGIYDOXZVKBDUWRKZ"
 from py5paisa import FivePaisaClient
 import pyotp,datetime
+from datetime import datetime,timedelta
 import pandas as pd
 client=None
 def login():
@@ -34,8 +35,8 @@ def login():
 
 def get_historical_data(token,timeframe):
     global client
-    from_time = datetime.datetime.now() - datetime.timedelta(days=4)
-    to_time = datetime.datetime.now()
+    from_time = datetime.now() - timedelta(days=4)
+    to_time = datetime.now()
     df = client.historical_data('N', 'C', token, timeframe, from_time, to_time)
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df.set_index('Datetime', inplace=True)
@@ -45,6 +46,38 @@ def get_historical_data(token,timeframe):
 
     return last_row_values
 
+def get_historical_data_tradeexecution(token, timeframe):
+    global client
+    current_time = datetime.now()
+    if timeframe == "1m":
+        delta_minutes = 1
+    elif timeframe == "2m":
+        delta_minutes = 2
+    elif timeframe == "5m":
+        delta_minutes = 5
+
+    desired_time = current_time - timedelta(minutes=delta_minutes)
+    desired_time = desired_time.replace(second=0)
+    desired_time_str = desired_time.strftime('%Y-%m-%d %H:%M:%S')
+
+    print("desired time:", desired_time_str)
+
+    from_time = datetime.now() - timedelta(days=4)
+    to_time = datetime.now()
+    df = client.historical_data('N', 'C', token, timeframe, from_time, to_time)
+    df['Datetime'] = pd.to_datetime(df['Datetime'])
+
+    # Filter last two rows
+    last_two_rows = df.iloc[-2:]
+
+    # Filter row matching the desired time
+    desired_row = last_two_rows[last_two_rows['Datetime'] == desired_time_str]
+
+    if not desired_row.empty:
+        desired_row_values = desired_row.iloc[0].to_dict()
+        return desired_row_values
+    else:
+        return None  # Or handle the case when no row matches the desired time
 
 
 

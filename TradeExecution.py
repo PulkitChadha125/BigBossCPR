@@ -105,6 +105,7 @@ def get_user_settings():
                 "breakdiff":None,
                 "Quantity":None,
                 "Rangeeee":None,
+                "NotTradingReason":None,
             }
             result_dict[row['Symbol']] = symbol_dict
         print("result_dict: ",result_dict)
@@ -112,11 +113,11 @@ def get_user_settings():
         print("Error happened in fetching symbol", str(e))
 
 get_user_settings()
-
+latencyadd=False
 
 # AliceBlueIntegration.option_contract(exch="NFO",symbol='BANKNIFTY',expiry_date="2024-03-27",strike=43300,call=True)
 def main_strategy ():
-    global result_dict,next_specific_part_time,total_pnl,runningpnl,niftypnl,bankniftypnl
+    global latencyadd,result_dict,next_specific_part_time,total_pnl,runningpnl,niftypnl,bankniftypnl
 
     try:
         for symbol, params in result_dict.items():
@@ -134,12 +135,12 @@ def main_strategy ():
             if isinstance(symbol_value, str):
                 if params["RunOnceHistory"] ==False and start_time <=current_time <= end_time:
                     params["RunOnceHistory"]=True
+                    if latencyadd==False:
+                        latencyadd = True
+                        time.sleep(2)
 
-                    print("StartTime=",start_time_str)
-                    print("StopTime=",end_time_str)
-                    print("CurrentTime=",current_time)
-                    data=FivePaisaIntegration.get_historical_data(int(params['ScripCode']),str(params['TimeFrame']))
-                    print(data)
+                    data=FivePaisaIntegration.get_historical_data_tradeexecution(int(params['ScripCode']),str(params['TimeFrame']))
+                    print(f"Symbol data {symbol} : {data}")
                     open_value = float(data['Open'])
                     high_value =float (data['High'])
                     low_value = float(data['Low'])
@@ -150,23 +151,37 @@ def main_strategy ():
                     params["low_value"] = low_value
                     params["close_value"] =close_value
                     params["volume_value"]= volume_value
-                    params["Rangeeee"]=float(high_value-low_value)
-                    if high_value-low_value <= params["CandleRangePts"]:
+                    Rangeeee=float(high_value-low_value)
+                    if high_value-low_value >= params["CandleRangePts"]:
                         params["TradingEnabled"]=False
-                        qty= int(params["Risk"]/params["Rangeeee"])
+                        params["NotTradingReason"]="Candle Range is greater than given pts "
+
+                    if high_value - low_value < params["CandleRangePts"]:
+                        qty= params["Risk"]/Rangeeee
+                        print(f" before {symbol} qty : {qty}")
+                        qty=int(qty)
+                        print(f"{symbol} qty : {qty}")
                         params["Quantity"]=qty
 
-
-                    if volume_value > params["Volume"]:
+                    if volume_value < params["Volume"]:
                         params["TradingEnabled"] = False
+                        params["NotTradingReason"] = f"Volume = {volume_value} less than given value in sheett {['Volume']}"
+
                     if close_value > params["TopCentral"]:
                         params["TradeSide"]= "BUY"
-                        if (abs(open_value-params["TopCentral"]))< params["OpeningDistance"]:
+                        if (abs(open_value-params["TopCentral"]))> params["OpeningDistance"]:
                             params["TradingEnabled"] = False
+                            params["NotTradingReason"] = f"Opening distance value: {abs(open_value-params['TopCentral'])} is more than what given in sheet :{params['OpeningDistance']}"
+
                     if close_value < params["BottomCentral"]:
                         params["TradeSide"] = "SHORT"
-                        if (abs(open_value-params["BottomCentral"]))< params["OpeningDistance"]:
+                        if (abs(open_value-params["BottomCentral"]))> params["OpeningDistance"]:
                             params["TradingEnabled"] = False
+                            params["NotTradingReason"] = f"Opening distance value: {abs(open_value-params['BottomCentral'])} is more than what given in sheet :{params['OpeningDistance']}"
+
+                if params["TradingEnabled"]==False:
+                    print("Reason for not trading : ",params["NotTradingReason"])
+
 
                 if params["TradingEnabled"] == True and start_time <=current_time <= end_time:
                     ltp=float(FivePaisaIntegration.get_ltp(int(params['ScripCode'])))
