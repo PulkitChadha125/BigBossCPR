@@ -155,6 +155,11 @@ def main_strategy ():
                     if high_value-low_value >= params["CandleRangePts"]:
                         params["TradingEnabled"]=False
                         params["NotTradingReason"]="Candle Range is greater than given pts "
+                        orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                        print(orderlog)
+                        write_to_order_logs(orderlog)
+
+                        print()
 
                     if high_value - low_value < params["CandleRangePts"]:
                         qty= params["Risk"]/Rangeeee
@@ -166,21 +171,63 @@ def main_strategy ():
                     if volume_value < params["Volume"]:
                         params["TradingEnabled"] = False
                         params["NotTradingReason"] = f"Volume = {volume_value} less than given value in sheett {['Volume']}"
+                        orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                        print(orderlog)
+                        write_to_order_logs(orderlog)
 
                     if close_value > params["TopCentral"]:
                         params["TradeSide"]= "BUY"
                         if (abs(open_value-params["TopCentral"]))> params["OpeningDistance"]:
                             params["TradingEnabled"] = False
                             params["NotTradingReason"] = f"Opening distance value: {abs(open_value-params['TopCentral'])} is more than what given in sheet :{params['OpeningDistance']}"
+                            orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
 
                     if close_value < params["BottomCentral"]:
                         params["TradeSide"] = "SHORT"
                         if (abs(open_value-params["BottomCentral"]))> params["OpeningDistance"]:
                             params["TradingEnabled"] = False
                             params["NotTradingReason"] = f"Opening distance value: {abs(open_value-params['BottomCentral'])} is more than what given in sheet :{params['OpeningDistance']}"
+                            orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                            print(orderlog)
+                            write_to_order_logs(orderlog)
 
-                if params["TradingEnabled"]==False:
-                    print("Reason for not trading : ",params["NotTradingReason"])
+                    if params["USE_CLOSING_CRITERIA"]==True:
+                        if (close_value > open_value):
+                            candlerange = high_value-low_value
+                            perapproved = candlerange * params["ClosePercentage"] * 0.01
+                            closedist = close_value-low_value
+                            if closedist<perapproved:
+                                params["TradingEnabled"] = False
+                                params[
+                                    "NotTradingReason"] = f"Close dist from low : {closedist} is not 80 % f candle range: {candlerange}, 80% value : {perapproved}"
+
+                                orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
+
+
+                        if (close_value < open_value):
+                            candlerange = high_value - low_value
+                            perapproved = candlerange * params["ClosePercentage"] * 0.01
+                            closedist =high_value - close_value
+                            if closedist < perapproved:
+                                params["TradingEnabled"] = False
+                                params[
+                                    "NotTradingReason"] = f"Close dist from low : {closedist} is not 80 % f candle range: {candlerange}, 80% value : {perapproved}"
+
+                                orderlog = f"{params['Symbol']} Reason for not trading :{params['NotTradingReason']} "
+                                print(orderlog)
+                                write_to_order_logs(orderlog)
+
+
+
+
+
+
+
+
 
 
                 if params["TradingEnabled"] == True and start_time <=current_time <= end_time:
@@ -325,7 +372,6 @@ def main_strategy ():
 
 
 # print(FivePaisaIntegration.get_margin())
-
 # # main_strategy()
 # # Zerodha_Integration.cover(sym="SBIN", quantity=1)
 while True:

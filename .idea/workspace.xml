@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80a5deda-a49f-441e-95ad-f283f48c32f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dist/TradeExecution.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Filtered.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradeExecution.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FivePaisaIntegration.py" beforeDir="false" afterPath="$PROJECT_DIR$/FivePaisaIntegration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OrderLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradeExecution.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TradeExecution.py" beforeDir="false" afterPath="$PROJECT_DIR$/TradeExecution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradeSettings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSettings.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/PKG-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/PYZ-00.pyz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/TradeExecution.pkg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/TradeExecution/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/TradeExecution.exe" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

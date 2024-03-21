@@ -59,3 +59,57 @@
 19/03/2024 11:15:11 Breakeven executed BANKBARODA , newsl= 250.55
 19/03/2024 11:15:14 Breakeven executed HINDALCO , newsl= 532.8
 19/03/2024 11:15:16 Breakeven executed SBIN , newsl= 727.7
+20/03/2024 14:36:59 Buy order executed @ BHARTIARTL @ 1230.75 , qty = 2222 , target= 1231.9499999999994, breakeven= 1231.4999999999995, stoploss= 1230.15,tradecount=1
+20/03/2024 14:37:01 Sell order executed @ IOC @ 157.7 , qty = 19999, target= 157.54999999999995, stoploss= 157.75, breakeven= 157.59999999999997 ,tradecount=1
+20/03/2024 14:37:18 Sell order executed @ BANKBARODA @ 248.35 , qty = 2500, target= 247.35000000000008, stoploss= 248.95, breakeven= 247.75000000000006 ,tradecount=1
+20/03/2024 14:37:18 Sell order executed @ BANKINDIA @ 131.9 , qty = 5000, target= 131.30000000000004, stoploss= 132.1, breakeven= 131.50000000000003 ,tradecount=1
+20/03/2024 14:37:21 Sell order executed @ IOC @ 157.6 , qty = 19999, target= 157.54999999999995, stoploss= 157.75, breakeven= 157.59999999999997 ,tradecount=1
+20/03/2024 14:37:22 Sell order executed @ INDUSINDBK @ 1440.15 , qty = 625, target= 1436.2000000000003, stoploss= 1442.6, breakeven= 1437.8000000000002 ,tradecount=1
+20/03/2024 14:37:26 Sell order executed @ HDFCBANK @ 1431.1 , qty = 740, target= 1427.0499999999995, stoploss= 1432.45, breakeven= 1428.3999999999996 ,tradecount=1
+20/03/2024 14:37:38 Buy order executed @ ADANIENSOL @ 1012.25 , qty = 606 , target= 1017.1999999999999, breakeven= 1015.55, stoploss= 1010.6,tradecount=1
+20/03/2024 14:38:05 Sell order executed @ BEL @ 186.25 , qty = 6666, target= 185.85000000000008, stoploss= 186.45, breakeven= 186.00000000000006 ,tradecount=1
+20/03/2024 14:38:22 Stoploss executed BANKBARODA @ 248.95,Current trade pnl = 1499.999999999986, NetPnl= 1499.999999999986
+20/03/2024 14:38:27 Buy order executed @ BANKBARODA @ 249.0 , qty = 2500 , target= 250.14999999999992, breakeven= 249.74999999999994, stoploss= 248.55,tradecount=2
+20/03/2024 14:38:37 Tsl executed IOC , newsl= 157.7
+20/03/2024 14:38:44 Stoploss executed BEL @ 186.45,Current trade pnl = 1333.1999999999243, NetPnl= 2833.1999999999102
+20/03/2024 14:38:49 Buy order executed @ BEL @ 186.45 , qty = 6666 , target= 186.89999999999992, breakeven= 186.74999999999994, stoploss= 186.3,tradecount=2
+20/03/2024 14:38:59 Stoploss executed BEL @ 186.3,Current trade pnl = -999.8999999998484, NetPnl= 1833.3000000000618
+20/03/2024 14:39:01 Sell order executed @ BEL @ 186.3 , qty = 6666, target= 185.85000000000008, stoploss= 186.45, breakeven= 186.00000000000006 ,tradecount=3
+20/03/2024 14:39:02 Tsl executed INDUSINDBK , newsl= 1441.0
+20/03/2024 14:39:04 Stoploss executed HDFCBANK @ 1432.45,Current trade pnl = 999.000000000101, NetPnl= 2832.300000000163
+20/03/2024 14:39:09 Buy order executed @ HDFCBANK @ 1432.7 , qty = 740 , target= 1436.5000000000005, breakeven= 1435.1500000000003, stoploss= 1431.1,tradecount=2
+20/03/2024 14:39:22 Target executed INDUSINDBK @ 1436.15, no more trades will be taken in INDUSINDBK,Current trade pnl = -2500.0, NetPnl= 332.300000000163
+20/03/2024 14:39:38 Stoploss executed BEL @ 186.45,Current trade pnl = 999.8999999998484, NetPnl= 1332.2000000000114
+20/03/2024 14:39:50 Buy order executed @ BEL @ 186.45 , qty = 6666 , target= 186.89999999999992, breakeven= 186.74999999999994, stoploss= 186.3,tradecount=4
+20/03/2024 14:40:12 Stoploss executed IOC @ 157.7,Current trade pnl = 1999.8999999998864, NetPnl= 3332.0999999998976
+20/03/2024 14:40:12 Buy order executed @ ONGC @ 262.85 , qty = 6666 , target= 263.3000000000001, breakeven= 263.1500000000001, stoploss= 262.7,tradecount=1
+20/03/2024 14:40:18 Breakeven executed BEL , newsl= 186.45
+20/03/2024 14:40:23 Stoploss executed BANKINDIA @ 132.1,Current trade pnl = 999.9999999999432, NetPnl= 4332.09999999984
+20/03/2024 14:40:23 Buy order executed @ IOC @ 157.75 , qty = 19999 , target= 157.90000000000003, breakeven= 157.85000000000002, stoploss= 157.7,tradecount=2
+20/03/2024 14:40:25 Buy order executed @ BANKINDIA @ 132.1 , qty = 5000 , target= 132.69999999999996, breakeven= 132.49999999999997, stoploss= 131.9,tradecount=2
+20/03/2024 14:40:27 Breakeven executed BANKBARODA , newsl= 248.95
+20/03/2024 14:40:30 Breakeven executed ADANIENSOL , newsl= 1012.25
+20/03/2024 14:40:35 Target executed IOC @ 157.95, no more trades will be taken in IOC,Current trade pnl = 3999.799999999773, NetPnl= 8331.899999999612
+20/03/2024 14:40:37 Target executed ADANIENSOL @ 1018.0, no more trades will be taken in ADANIENSOL,Current trade pnl = 3484.5, NetPnl= 11816.399999999612
+20/03/2024 14:40:42 Target executed BEL @ 186.9, no more trades will be taken in BEL,Current trade pnl = 2999.7000000001135, NetPnl= 14816.099999999726
+20/03/2024 14:41:15 Buy order executed @ BHARTIARTL @ 1230.85 , qty = 1538 , target= 1232.7999999999995, breakeven= 1232.1499999999996, stoploss= 1230.2,tradecount=1
+20/03/2024 14:43:08 Stoploss executed BANKINDIA @ 131.9,Current trade pnl = -999.9999999999432, NetPnl= 13816.099999999782
+20/03/2024 14:43:10 Sell order executed @ BANKINDIA @ 131.85 , qty = 5000, target= 131.30000000000004, stoploss= 132.1, breakeven= 131.50000000000003 ,tradecount=3
+20/03/2024 14:43:10 Stoploss executed ONGC @ 262.7,Current trade pnl = -999.9000000002274, NetPnl= 12816.199999999555
+20/03/2024 14:43:12 Sell order executed @ ONGC @ 262.7 , qty = 6666, target= 262.2499999999999, stoploss= 262.85, breakeven= 262.3999999999999 ,tradecount=2
+20/03/2024 14:43:24 Stoploss executed ONGC @ 262.85,Current trade pnl = 999.9000000002274, NetPnl= 13816.099999999782
+20/03/2024 14:43:26 Buy order executed @ ONGC @ 262.85 , qty = 6666 , target= 263.3000000000001, breakeven= 263.1500000000001, stoploss= 262.7,tradecount=3
+20/03/2024 14:44:36 Stoploss executed BANKINDIA @ 132.1,Current trade pnl = 1250.0, NetPnl= 15066.099999999782
+20/03/2024 14:44:38 Buy order executed @ BANKINDIA @ 132.1 , qty = 5000 , target= 132.69999999999996, breakeven= 132.49999999999997, stoploss= 131.9,tradecount=4
+20/03/2024 14:44:39 Breakeven executed ONGC , newsl= 262.85
+20/03/2024 14:45:01 Breakeven executed HDFCBANK , newsl= 1432.45
+20/03/2024 14:45:38 Target executed HDFCBANK @ 1436.7, no more trades will be taken in HDFCBANK,Current trade pnl = 2960.0, NetPnl= 18026.09999999978
+20/03/2024 14:47:07 Target executed ONGC @ 263.35, no more trades will be taken in ONGC,Current trade pnl = 3333.0, NetPnl= 21359.09999999978
+20/03/2024 14:49:01 Stoploss executed BANKINDIA @ 131.9,Current trade pnl = -999.9999999999432, NetPnl= 20359.09999999984
+20/03/2024 14:50:53 Sell order executed @ BEL @ 187.5 , qty = 10000, target= 187.25000000000003, stoploss= 187.65, breakeven= 187.35000000000002 ,tradecount=1
+20/03/2024 14:50:53 Buy order executed @ BHARTIARTL @ 1231.6 , qty = 2000 , target= 1232.7, breakeven= 1232.2, stoploss= 1230.7,tradecount=1
+20/03/2024 14:50:55 Sell order executed @ IOC @ 158.05 , qty = 10000, target= 157.8, stoploss= 158.2, breakeven= 157.9 ,tradecount=1
+20/03/2024 14:50:56 Buy order executed @ INDUSTOWER @ 249.8 , qty = 20000 , target= 249.84999999999994, breakeven= 249.79999999999995, stoploss= 249.65,tradecount=1
+20/03/2024 14:50:56 Breakeven executed INDUSTOWER , newsl= 249.7
+20/03/2024 14:51:04 Sell order executed @ BANKBARODA @ 249.2 , qty = 2499, target= 247.99999999999997, stoploss= 249.6, breakeven= 248.39999999999998 ,tradecount=1
+20/03/2024 14:51:29 Buy order executed @ ADANIENSOL @ 1015.0 , qty = 1538 , target= 1016.9000000000003, breakeven= 1016.2500000000002, stoploss= 1014.3,tradecount=1
